@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: showroom-service-local
+  datasource:
+    url: jdbc:postgresql://localhost:5432/showroom
+    username: postgres
+    password: admin
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        show-sql: true
+        format-sql: true
+        hbm2ddl.auto: none
+
+
+logging:
+  level:
+    root: INFO
+    com.neom.geointel: DEBUG
+    liquibase: DEBUG
+    org.springframework.data: DEBUG
+    reactor.netty.http.client : DEBUG
+
+
+keycloak:
+  url: http://localhost:8080

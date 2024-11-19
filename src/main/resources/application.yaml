@@ -1,0 +1,30 @@
+spring:
+  flyway:
+    placeholder-replacement: false
+    out-of-order: false
+    url: jdbc:${spring.datasource.url}
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+  datasource:
+    url: ${spring.datasource.url}
+    username: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: ${keycloak.openid-uri}/certs
+          issuer-uri: ${keycloak.issuer-uri}
+  application:
+    name: car-showroom
+  profiles:
+    active: local
+
+keycloak:
+  realm: elm
+  client: backend
+  issuer-uri: ${keycloak.url}/realms/${keycloak.realm}
+  openid-uri: ${keycloak.issuer-uri}/protocol/openid-connect
+
+server:
+  port: 8081
